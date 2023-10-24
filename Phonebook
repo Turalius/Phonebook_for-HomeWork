@@ -1,0 +1,31 @@
+# Инициализация пустого телефонного справочника
+phonebook = {}
+
+# Функция для добавления контакта
+def add_contact(name, phone_number):
+    phonebook[name] = phone_number
+
+# Функция для поиска контакта по имени или фамилии
+def find_contact(query):
+    matching_contacts = {name: phone for name, phone in phonebook.items() if query in name}
+    if matching_contacts:
+        for name, phone in matching_contacts.items():
+            print(f'Имя: {name}, Номер телефона: {phone}')
+    else:
+        print('Контакт не найден.')
+
+# Функция для изменения номера телефона контакта
+def edit_contact(name, new_phone_number):
+    if name in phonebook:
+        phonebook[name] = new_phone_number
+        print(f'Номер телефона для {name} обновлен.')
+    else:
+        print('Контакт не найден.')
+
+# Функция для удаления контакта
+def delete_contact(name):
+    if name in phonebook:
+        del phonebook[name]
+        print(f'{name} удален из телефонного справочника.')
+    else:
+        print('Контакт не найден.')
